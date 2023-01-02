@@ -1,3 +1,11 @@
+import requests
+import json
+import time
+from random import randint, sample
+from bs4 import BeautifulSoup
+
+# !pip install bs4
+
 Telegram_API_key = "SAMPLE_KEY"
 def get_art_gal_img_prompt():
   URL = "https://www.midjourney.com/showcase/recent/"
