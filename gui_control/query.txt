@@ -1,0 +1,29 @@
+select s.id, name , salary, f.friend_id  from students s 
+join
+packages p on s.id = p.id
+join
+friends f on p.id = f.id;
+
+select t.name
+from
+(select s.id , name , salary, f.friend_id from students s join packages p on s.id = p.id join friends f on p.id = f.id) as t
+join 
+(select s.id  , name , salary, f.friend_id  from students s join packages p on s.id = p.id join friends f on p.id = f.id) as k
+where (t.id=k.friend_id) and (t.salary<k.salary)
+order by k.salary
+
+
+
+
+
+
+-- select t.name 
+--     from (select s.id, name , salary from students s join packages p on   s.id = p.id) AS t 
+-- join
+--     (select s.id, name , salary from students s join packages p on   s.id = p.id)
+-- where
+--     t.salary < (select salary from packages p join friends f where p.id = f.friend_id );
+
+-- (select s.id, name , salary from students s join packages p on s.id = p.id);
+
+-- select s.id, name , salary from students s join packages p on   s.id = p.id
